@@ -27,6 +27,18 @@
       "title": "Meet ASTRA!",
       "text": "Hello world from Astra!",
       "images": ["images/astra.jpg"]
+    },
+    "MINI": {
+      "type": "code",
+      "title": "SEALED VAULT",
+      "prompt": "ENTER ACCESS CODE",
+      "salt": "emil",
+      "codeHash": "1f479798d48f1e3ed454e0c28e774fa0d4d43f19d39e8720f3b71d84cb95d3d6",
+      "maxAttempts": 0,
+      "failText": "ACCESS DENIED. TRY AGAIN.",
+      "successTitle": "ACCESS GRANTED",
+      "successText": "SILICOIDS Welcome aboard!",
+      "successImages": []
     }
   }
 }
