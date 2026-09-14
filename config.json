@@ -21,6 +21,12 @@
       "successTitle": "ACCESS GRANTED",
       "successText": "The vault hisses open, revealing a final note:\n\n\"The answer lies beneath the old oak.\"",
       "successImages": []
+    },
+    "ASTRA": {
+      "type": "reveal",
+      "title": "Meet ASTRA!",
+      "text": "Hello world from Astra!",
+      "images": ["astra.jpg"]
     }
   }
 }

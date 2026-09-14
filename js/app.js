@@ -109,6 +109,7 @@ function showScreen(name) {
 
 function resetToIdle() {
   currentTagKey = null;
+  lastRoutedKey = null;
   els.codeInput.value = "";
   els.codeFeedback.textContent = "";
   showScreen("idle");
@@ -170,7 +171,17 @@ function maybeAutoStartFromDebugParam() {
 
 /* ---------------- Routing ---------------- */
 
+const TAG_DEBOUNCE_MS = 2000;
+let lastRoutedKey = null;
+let lastRoutedAt = 0;
+
 function routeTag(key) {
+  const now = Date.now();
+  // NFC readers often fire "reading" several times for one tap; ignore repeats.
+  if (key === lastRoutedKey && now - lastRoutedAt < TAG_DEBOUNCE_MS) return;
+  lastRoutedKey = key;
+  lastRoutedAt = now;
+
   currentTagKey = key;
   const entry = CONFIG.tags && CONFIG.tags[key];
   logLine(`TAG DETECTED: ${key}`);
@@ -276,16 +287,19 @@ async function sha256Hex(text) {
 /* ---------------- Cosmetic helpers ---------------- */
 
 function typeInto(el, text, speed = 14) {
+  // Cancel any typewriter still running on this element to avoid interleaved writes.
+  if (el._typeTimer) clearInterval(el._typeTimer);
   el.classList.remove("typing");
   el.textContent = "";
   if (!text) return;
   el.classList.add("typing");
   let i = 0;
-  const timer = setInterval(() => {
+  el._typeTimer = setInterval(() => {
     el.textContent += text[i];
     i++;
     if (i >= text.length) {
-      clearInterval(timer);
+      clearInterval(el._typeTimer);
+      el._typeTimer = null;
       el.classList.remove("typing");
     }
   }, speed);
