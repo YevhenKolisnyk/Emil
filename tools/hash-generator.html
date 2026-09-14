@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quest Terminal — Hash Generator</title>
+<style>
+  body {
+    background: #01100a;
+    color: #33ff66;
+    font-family: Consolas, "Courier New", monospace;
+    max-width: 640px;
+    margin: 40px auto;
+    padding: 0 16px;
+    line-height: 1.6;
+  }
+  h1 { font-size: 18px; letter-spacing: 2px; }
+  label { display: block; margin-top: 16px; font-size: 13px; color: #1c9e42; }
+  input {
+    width: 100%;
+    background: transparent;
+    border: 1px solid #1c9e42;
+    color: #a6ffb4;
+    font-family: inherit;
+    font-size: 15px;
+    padding: 8px;
+    margin-top: 4px;
+  }
+  button {
+    margin-top: 16px;
+    background: transparent;
+    border: 1px solid #33ff66;
+    color: #33ff66;
+    font-family: inherit;
+    padding: 10px 16px;
+    cursor: pointer;
+  }
+  button:hover { background: #33ff66; color: #001b0d; }
+  pre {
+    background: #000;
+    border: 1px solid #1c9e42;
+    padding: 12px;
+    white-space: pre-wrap;
+    word-break: break-all;
+    margin-top: 16px;
+  }
+  .hint { color: #1c9e42; font-size: 12px; }
+</style>
+</head>
+<body>
+<h1>QUEST TERMINAL — OFFLINE HASH GENERATOR</h1>
+<p class="hint">
+  This page runs entirely in your browser (no network requests, no server).
+  Use it to turn a plain-text code into the salted SHA-256 hash you paste
+  into <code>config.json</code>, so the real code never appears in the app's
+  source files.
+</p>
+
+<label for="salt">Salt (any random string, unique per tag)</label>
+<input id="salt" type="text" placeholder="e.g. vault-02-salt-9f2a">
+
+<label for="code">Secret code (plain text)</label>
+<input id="code" type="text" placeholder="e.g. OPEN-SESAME-42">
+
+<button id="btn-generate">[ GENERATE HASH ]</button>
+
+<pre id="output">Result will appear here.</pre>
+
+<p class="hint">
+  Copy the generated hash into the tag's <code>codeHash</code> field in
+  config.json, and copy the salt into that tag's <code>salt</code> field.
+</p>
+
+<script>
+document.getElementById("btn-generate").addEventListener("click", async () => {
+  const salt = document.getElementById("salt").value;
+  const code = document.getElementById("code").value;
+  const output = document.getElementById("output");
+
+  if (!code) {
+    output.textContent = "Enter a code first.";
+    return;
+  }
+
+  const data = new TextEncoder().encode(salt + code);
+  const digest = await crypto.subtle.digest("SHA-256", data);
+  const hex = Array.from(new Uint8Array(digest))
+    .map((b) => b.toString(16).padStart(2, "0"))
+    .join("");
+
+  output.textContent = `"salt": "${salt}",\n"codeHash": "${hex}"`;
+});
+</script>
+</body>
+</html>

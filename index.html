@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="theme-color" content="#000000">
+<title>Quest Terminal</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="crt-overlay" aria-hidden="true"></div>
+
+<main id="terminal">
+  <header id="term-header">
+    <span id="app-title">QUEST TERMINAL</span>
+    <span id="clock">00:00:00</span>
+  </header>
+
+  <div id="term-log" aria-live="polite"></div>
+
+  <!-- Idle / scan screen -->
+  <section id="screen-idle" class="screen">
+    <pre id="idle-text" class="term-text"></pre>
+    <button id="btn-scan" class="term-btn">[ TAP TO SCAN ]</button>
+    <div id="scan-status" class="term-status"></div>
+  </section>
+
+  <!-- Unsupported device screen -->
+  <section id="screen-unsupported" class="screen hidden">
+    <pre id="unsupported-text" class="term-text"></pre>
+  </section>
+
+  <!-- Unknown tag screen -->
+  <section id="screen-unknown" class="screen hidden">
+    <pre id="unknown-text" class="term-text"></pre>
+    <button class="term-btn btn-rescan">[ SCAN AGAIN ]</button>
+  </section>
+
+  <!-- Reveal (text/image) screen -->
+  <section id="screen-reveal" class="screen hidden">
+    <h2 id="reveal-title" class="term-title"></h2>
+    <pre id="reveal-text" class="term-text"></pre>
+    <div id="reveal-images" class="image-grid"></div>
+    <button class="term-btn btn-rescan">[ SCAN NEXT TAG ]</button>
+  </section>
+
+  <!-- Code entry screen -->
+  <section id="screen-code" class="screen hidden">
+    <h2 id="code-title" class="term-title"></h2>
+    <pre id="code-prompt" class="term-text"></pre>
+    <div class="code-line">
+      <span class="code-caret">&gt;</span>
+      <input id="code-input" type="text" autocomplete="off" autocapitalize="off"
+             autocorrect="off" spellcheck="false" inputmode="text" maxlength="64">
+    </div>
+    <button id="btn-submit-code" class="term-btn">[ EXECUTE ]</button>
+    <div id="code-feedback" class="term-status"></div>
+    <button class="term-btn btn-rescan">[ ABORT / SCAN NEXT ]</button>
+  </section>
+
+  <!-- Success screen (after correct code) -->
+  <section id="screen-success" class="screen hidden">
+    <h2 id="success-title" class="term-title"></h2>
+    <pre id="success-text" class="term-text"></pre>
+    <div id="success-images" class="image-grid"></div>
+    <button class="term-btn btn-rescan">[ SCAN NEXT TAG ]</button>
+  </section>
+</main>
+
+<script src="js/app.js"></script>
+</body>
+</html>

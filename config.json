@@ -1,0 +1,26 @@
+{
+  "appTitle": "QUEST TERMINAL",
+  "idleText": "AWAITING NFC SIGNAL...\nHold your phone near a tagged object to continue.",
+  "unknownTagText": "UNRECOGNIZED SIGNATURE.\nThis object does not match any known record.",
+  "unsupportedText": "WEB NFC NOT AVAILABLE.\nOpen this page in Chrome on an NFC-enabled Android phone.",
+  "tags": {
+    "relic-01": {
+      "type": "reveal",
+      "title": "THE FIRST RELIC",
+      "text": "Etched into the surface you find a message:\n\n\"Where shadows lengthen at noon, the second key awaits.\"",
+      "images": []
+    },
+    "vault-02": {
+      "type": "code",
+      "title": "SEALED VAULT",
+      "prompt": "ENTER ACCESS CODE",
+      "salt": "change-this-salt-vault-02",
+      "codeHash": "REPLACE_WITH_HASH_FROM_tools/hash-generator.html",
+      "maxAttempts": 0,
+      "failText": "ACCESS DENIED. TRY AGAIN.",
+      "successTitle": "ACCESS GRANTED",
+      "successText": "The vault hisses open, revealing a final note:\n\n\"The answer lies beneath the old oak.\"",
+      "successImages": []
+    }
+  }
+}
