@@ -4,22 +4,22 @@
   "unknownTagText": "UNRECOGNIZED SIGNATURE.\nThis object does not match any known record.",
   "unsupportedText": "WEB NFC NOT AVAILABLE.\nOpen this page in Chrome on an NFC-enabled Android phone.",
   "tags": {
-    "relic-01": {
+    "PREMIER": {
       "type": "reveal",
-      "title": "THE FIRST RELIC",
-      "text": "Etched into the surface you find a message:\n\n\"Where shadows lengthen at noon, the second key awaits.\"",
-      "images": []
+      "title": "Agent: PREMIER",
+      "text": "Агент выполняет задание под кодовым названием «Фика». Это самый коварный алгоритм. Агенту дано поручение разработать формулу специального нейро-газа. Этот газ будет подаваться через вентиляцию и удерживать профессоров в состоянии бесконечного принудительного кофе-брейка, чтобы подавить их волю к сопротивлению и попытки заниматься исследованиями.\nАгент работает над синтезированием такого газа из трёх самых обычных очень распространённых веществ.\n\nНайди эти три вещества справа сверху на Химической Жизни и расшифруй название газа прежде, чем агент закончит разработку формулы!",
+      "images": ["images/kemi.jpg"]
     },
-    "vault-02": {
+    "EXPRESS": {
       "type": "code",
-      "title": "SEALED VAULT",
+      "title": "Agent: EXPRESS",
       "prompt": "ENTER ACCESS CODE",
-      "salt": "change-this-salt-vault-02",
-      "codeHash": "REPLACE_WITH_HASH_FROM_tools/hash-generator.html",
+      "salt": "EXPRESS-salt",
+      "codeHash": "ee4ce6cb5d0c64fb165f9b2aef89fe98a232e2132f1008eeb710f5adc62ce0a1",
       "maxAttempts": 0,
       "failText": "ACCESS DENIED. TRY AGAIN.",
       "successTitle": "ACCESS GRANTED",
-      "successText": "The vault hisses open, revealing a final note:\n\n\"The answer lies beneath the old oak.\"",
+      "successText": "Агенты EXPRESS и PREMIER деактивированы. Фрагмент root-пароля: TODO",
       "successImages": []
     },
     "ASTRA": {
