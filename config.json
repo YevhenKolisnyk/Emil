@@ -150,8 +150,6 @@
       "successText": "Агенты BISON и OTTER деактивированы.\nФрагмент root-пароля: EML",
       "successImages": []
     },
-
-//final EMIL
     "EMIL": {
       "type": "code",
       "title": "System: E.M.I.L.",
