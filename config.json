@@ -153,7 +153,7 @@
     "EMIL": {
       "type": "code",
       "title": "System: E.M.I.L.",
-      "prompt": "ENTER ROOT-PASSWORD",
+      "prompt": "ENTER ROOT-PASSWORD.\nFormat:***-***-***-***-***-***-***",
       "salt": "EMIL-salt",
       "codeHash": "101207724fa421ea5f1a56fb2f030f1d5533c68681eda6744dc9f00a36cdfcdb",
       "maxAttempts": 0,
